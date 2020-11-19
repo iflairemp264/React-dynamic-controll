@@ -1,24 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
-
+import DynamicFormControll from './components/DynamicFormControll';
+import IncorporationForm from './components/IncorporationForm';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Authentication from './components/Authentication';
+import AuthContext from './context/context';
+import {useState} from 'react'
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+    const login = () => {
+        setLoggedIn(true);
+    }
+    const logout = () => {
+        setLoggedIn(false);
+    }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <a className="navbar-brand" href="#">Welocme</a>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+              <li><Link to={'/'} className="nav-link"> Home </Link></li>
+              <li><Link to={'/dynamiccontrol'} className="nav-link">Dynamic Controlls</Link></li>
+              <li><Link to={'/authentication'} className="nav-link">Authentication</Link></li>
+            </ul>
+          </div>
+        </nav>
+        <header className="App-header">
+          <Switch>
+            <Route exact path='/' component={DynamicFormControll} />
+            <Route path='/dynamiccontrol' component={IncorporationForm} />
+            <Route path='/authentication' component={Authentication} />
+            {/* <Route path='/about' component={About} /> */}
+          </Switch>
+          
+
+        </header>
+      </Router>
+     
     </div>
+
   );
 }
 
