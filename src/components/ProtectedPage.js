@@ -1,8 +1,9 @@
-import react, { useContext } from 'react';
+import React from 'react';
 
-import { AuthContext } from "./context";
-
-export default function ProtectedResource(){ 
-   const authContext = useContext(AuthContext);
-   return authContext.isLoggedIn && <h2>Protected resource</h2>;
+function Protected(){
+    return(
+        <p>Protected Page</p>
+    );
 }
+
+export default Protected;

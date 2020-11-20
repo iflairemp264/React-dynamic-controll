@@ -1,5 +1,6 @@
 import react, { useContext } from 'react'
 import { AuthContext } from '../context/context';
+
 export default function Authentication() {
     const authContext = useContext(AuthContext);
     const loginHandler = () => {
